@@ -17,7 +17,7 @@ class Vehicle(models.Model):
     ''' Vehicle class uniquely with the registration plate number '''
     created_at         = models.DateTimeField(auto_now_add=True)
     updated_at         = models.DateTimeField(auto_now=True)
-    registratron_plate = models.CharField(max_length=100)
+    registration_plate = models.CharField(max_length=100)
 
 class PersonVehicle(models.Model):
     ''' PersonVehicle register the relatioship between a vehicle in a person,
