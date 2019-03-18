@@ -7,22 +7,23 @@ from django.db import models
 
 class Person(models.Model):
     ''' Person class identifies a unique physical person by its first name, last name and email '''
-    created_at          = models.DateTimeField(auto_now_add=True)
-    updated_at          = models.DateTimeField(auto_now=True)
-    first_name          = models.CharField(max_length=100)
-    last_name           = models.CharField(max_length=100)
-    email               = models.CharField(max_length=100)
+    created_at         = models.DateTimeField(auto_now_add=True)
+    updated_at         = models.DateTimeField(auto_now=True)
+    first_name         = models.CharField(max_length=100)
+    last_name          = models.CharField(max_length=100)
+    email              = models.CharField(max_length=100)
 
 class Vehicle(models.Model):
     ''' Vehicle class uniquely with the registration plate number '''
-    created_at          = models.DateTimeField(auto_now_add=True)
-    updated_at          = models.DateTimeField(auto_now=True)
-    registratrion_plate = models.CharField(max_length=100)
+    created_at         = models.DateTimeField(auto_now_add=True)
+    updated_at         = models.DateTimeField(auto_now=True)
+    registratron_plate = models.CharField(max_length=100)
 
 class PersonVehicle(models.Model):
-    ''' PersonVehicle register the relatioship between a vehicle in a person, in other words the owner of the vehicle at a given point in time '''
-    created_at          = models.DateTimeField(auto_now_add=True)
-    updated_at          = models.DateTimeField(auto_now=True)
-    vehicle             = models.ForeignKey(Vehicle, on_delete = models.PROTECT)
-    person              = models.ForeignKey(Person, on_delete = models.PROTECT)
+    ''' PersonVehicle register the relatioship between a vehicle in a person,
+        in other words the owner of the vehicle at a given point in time '''
+    created_at         = models.DateTimeField(auto_now_add=True)
+    updated_at         = models.DateTimeField(auto_now=True)
+    vehicle            = models.ForeignKey(Vehicle, on_delete = models.PROTECT)
+    person             = models.ForeignKey(Person, on_delete = models.PROTECT)
 
