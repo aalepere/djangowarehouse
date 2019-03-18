@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'dwh_app',
+    'dwh_app_simple_history',
 ]
 
 MIDDLEWARE = [
