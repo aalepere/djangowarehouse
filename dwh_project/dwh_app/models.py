@@ -12,12 +12,18 @@ class Person(models.Model):
     first_name         = models.CharField(max_length=100)
     last_name          = models.CharField(max_length=100)
     email              = models.CharField(max_length=100)
+    
+    def __str__(self):
+        return '{} {}'.format(self.first_name, self.last_name)
 
 class Vehicle(models.Model):
     ''' Vehicle class uniquely with the registration plate number '''
     created_at         = models.DateTimeField(auto_now_add=True)
     updated_at         = models.DateTimeField(auto_now=True)
     registration_plate = models.CharField(max_length=100)
+    
+    def __str__(self):
+        return self.registration_plate
 
 class PersonVehicle(models.Model):
     ''' PersonVehicle register the relatioship between a vehicle in a person,
@@ -27,3 +33,5 @@ class PersonVehicle(models.Model):
     vehicle            = models.ForeignKey(Vehicle, on_delete = models.PROTECT)
     person             = models.ForeignKey(Person, on_delete = models.PROTECT)
 
+    def __str__(self):
+        return '{} {}'.format(self.vehicle, self.person)
