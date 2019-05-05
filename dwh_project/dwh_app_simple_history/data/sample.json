@@ -1,0 +1,8 @@
+{
+    "first_name" : "Arnaud",
+    "last_name": "Alepee",
+    "email": "alpha@beta.com",
+    "vehicles": [
+        {"registration_plate": "XYZ 123"},
+        {"registration_plate": "ABC 456"}]
+}
