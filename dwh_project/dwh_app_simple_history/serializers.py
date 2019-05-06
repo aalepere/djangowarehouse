@@ -37,7 +37,7 @@ class PersonVehicleSerializer(serializers.Serializer):
 
         # Then create each Vehicle and link it to the person created before
         for vehicle in self.validated_data["vehicles"]:
-            vehicle_obj = Vehicle.objects.create(registration_plate=vehicle["registration_plate"])
+            vehicle_obj = Vehicle.objects.get_or_create(registration_plate=vehicle["registration_plate"])
             personvehicle_obj = PersonVehicle.objects.update_or_create(
                 vehicle=vehicle_obj, defaults={"person": person_obj}
             )

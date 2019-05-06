@@ -4,8 +4,6 @@
 from django.db import models
 from simple_history.models import HistoricalRecords
 
-# Create your models here.
-
 
 class Person(models.Model):
     """ Person class identifies a unique physical person by its first name, last name and email """
