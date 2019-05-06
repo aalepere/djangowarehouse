@@ -1,0 +1,27 @@
+# Secrets and local settings
+secrets.py
+secrets_env
+.env
+
+# IDEs and editors
+.*.swp
+.*.swo
+.vscode/
+.ipynb_checkpoints/
+.idea/
+
+# Django & Python outputs
+/env/
+*.pyc
+db.sqlite3*
+MANIFEST
+
+# Tests
+*.ipynb
+.tox/
+.coverage
+htmlcov/
+
+# Mac specific
+.DS_Store
+
