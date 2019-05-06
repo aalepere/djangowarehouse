@@ -2,7 +2,7 @@
 This repo contains the code to support the article published on Medium.
 
 ## 1 Libraries
-A requirements file has been created so you can setup your own virtual env and then install libraries as listed in requirements.txt
+A requirements file has been created so you can set up your own virtual env and then install libraries as listed in requirements.txt
 
 ### Virtual env
 Please make sure you have installed virtual env library first: https://docs.python.org/3/library/venv.html
@@ -17,7 +17,7 @@ pip install -r requirements.txt
 ```
 
 ## 2 Django
-When you clone the repository you would not require to do this; but to setup a new project and app please refer to the Django documentation or tutorial: https://docs.djangoproject.com/en/2.1/intro/tutorial01/
+When you clone the repository you would not require to do this; but to set up a new project and app please refer to the Django documentation or tutorial: https://docs.djangoproject.com/en/2.1/intro/tutorial01/
 
 Remember to run makemigrations and migrate to initiate the database
 ```shell
@@ -94,8 +94,8 @@ class Vehicle(models.Model):
 
 
 class PersonVehicle(models.Model):
-    """ PersonVehicle register the relatioship between a vehicle in a person,
-        in other words the owner of the vehicle at a given point in time """
+    """ PersonVehicle register the relationship between a vehicle in a person,
+        in other words, the owner of the vehicle at a given point in time """
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -156,8 +156,8 @@ class Vehicle(models.Model):
 
 
 class PersonVehicle(models.Model):
-    """ PersonVehicle register the relatioship between a vehicle in a person,
-        in other words the owner of the vehicle at a given point in time """
+    """ PersonVehicle register the relationship between a vehicle in a person,
+        in other words, the owner of the vehicle at a given point in time """
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -172,7 +172,7 @@ class PersonVehicle(models.Model):
         return "{} {}".format(self.vehicle, self.person)
 ```
 
-None that we had the field `history` in each model where we wished to track changes overtime. These changes will be stored in a mirror table with prefix `history`.
+None that we had the field `history` in each model where we wished to track changes over time. These changes will be stored in a mirror table with prefix `history`.
 
 In order to be able to track changes we also need to define `surrogate keys`, these keys are the business definition of uniqueness. For example, in the `Person` table, we defined `first_name` and `last_name` as `unique_together`, which means that those fields will not be updatable however `email` is.
 
@@ -196,7 +196,7 @@ Now let's have a look in the historical table to see how changes have been recor
 ```
 
 ### Serializers
-As explained previously, serializers will be used to parse and validate the input date before inserting same in the relevant SQL tables.
+As explained previously, serializers will be used to parse and validate the input date before inserting the same in the relevant SQL tables.
 
 Now let's assume that external sources provide us information as per the below JSON format:
 ```json
@@ -210,7 +210,7 @@ Now let's assume that external sources provide us information as per the below J
 }
 ```
 
-The JSON provides the identity of person and list of vehicles that current belongs to this person, below are the serializers that will be used to parse this JSON:
+The JSON provides the identity of person and list of vehicles that currently belongs to this person, below are the serializers that will be used to parse this JSON:
 ```python
 from rest_framework import serializers
 
@@ -219,8 +219,8 @@ from dwh_app_simple_history.models import Person, PersonVehicle, Vehicle
 
 class VehicleSerializer(serializers.Serializer):
     """
-    Nested serializer within the JSON source; in this example all vehicles that belongs to the
-    person are nested in the JON as a list of all active vehicles.
+    Nested serializer within the JSON source; in this example all vehicles that belong to the
+    person nested in the JON as a list of all active vehicles.
     """
 
     registration_plate = serializers.CharField(max_length=100)
@@ -238,7 +238,7 @@ class PersonVehicleSerializer(serializers.Serializer):
 
     def save(self):
         """
-        Overwrite the save function on the seriliazer to be able to control how we want to
+        Overwrite the save function on the serializer to be able to control how we want to
         insert/update the data provided by the source in our datawarehouse.
         """
 
@@ -282,7 +282,7 @@ OrderedDict([('first_name', 'Arnaud'),
 ```
 
 ### Views
-In the previous example we were using a json file and django shell to insert data into our datawarehouse. Let's take this forward by adding a `view` that will allow to insert data through a `POST` api request.
+In the previous example, we were using a json file and django shell to insert data into our datawarehouse. Let's take this forward by adding a `view` that will allow inserting data through a `POST` api request.
 
 ```python
 from django.shortcuts import render
@@ -321,8 +321,8 @@ As you can see we use the same sequence that we used in django shell, but using 
 ## Conclusion
 In this article, we have covered all the steps and components of building a datwarehouse with django:
 - Use the django ORM to create 3rd normal form data model;
-- Use simple history to track changes overtime;
+- Use simple history to track changes over time;
 - Use serializer the rest framework for deserializing source files and save the results in the datawarehouse; and
 - Use views from the rest framework to allow source systems to send information through a POST request.
 
-All the above, should give enough information to build your own datawarehouse, of course you will have to go through all the different sources, understand how the data will be used downstream to model the data in the most efficient way.
+All the above, should give enough information to build your own datawarehouse, of course, you will have to go through all the different sources, understand how the data will be used downstream to model the data in the most efficient way.
