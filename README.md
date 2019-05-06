@@ -49,8 +49,8 @@ This will be key in the implementation of our data warehouse as we will leverage
 The Rest-Framework is part of the Django ecosystem and is a useful toolkit to create web APIs.
 The component of that framework that we will be using is called serializers; which allow to serialize complex data structures to a render JSON (a typical GET request) but also to parse data to be converted back into complex types, after first validating the incoming data (also called deserialization). 
 Which in our case will be extremely useful as we can leverage deserialization to ensure the information is coming in the right format and we can map each element to the right field in our data warehouse.
-https://www.djangoproject.com/
-https://www.django-rest-framework.org/
+- https://www.djangoproject.com/
+- https://www.django-rest-framework.org/
 
 We will explain how to implement our data warehouse by adding each feature once at the time.
 
@@ -191,7 +191,7 @@ Now let's have a look in the historical table to see how changes have been recor
 ```python
 >>>from dwh_app_simple_history.models import Person
 >>> Person.history.all()
-<QuerySet [{'id': 1, 'created_at': datetime.datetime(2019, 5, 5, 21, 18, 52, 55293, tzinfo=<UTC>), 'updated_at': datetime.datetime(2019, 5, 6, 17, 36, 48, 349931, tzinfo=<UTC>), 'first_name': 'Arnaud', 'last_name': 'Alepee', 'email': 'new@email.com', 'history_id': 4, 'history_date': datetime.datetime(2019, 5, 6, 17, 36, 48, 352849, tzinfo=<UTC>), 'history_change_reason': None, 'history_type': '~', 'history_user_id': None}, 
+<QuerySet [{'id': 1, 'created_at': datetime.datetime(2019, 5, 5, 21, 18, 52, 55293, tzinfo=<UTC>), 'updated_at': datetime.datetime(2019, 5, 6, 17, 36, 48, 349931, tzinfo=<UTC>), 'first_name': 'Arnaud', 'last_name': 'Alepee', 'email': 'new@email.com', 'history_id': 2, 'history_date': datetime.datetime(2019, 5, 6, 17, 36, 48, 352849, tzinfo=<UTC>), 'history_change_reason': None, 'history_type': '~', 'history_user_id': None}, 
 {'id': 1, 'created_at': datetime.datetime(2019, 5, 5, 21, 18, 52, 55293, tzinfo=<UTC>), 'updated_at': datetime.datetime(2019, 5, 5, 21, 18, 52, 55340, tzinfo=<UTC>), 'first_name': 'Arnaud', 'last_name': 'Alepee', 'email': 'alpha@beta.com', 'history_id': 1, 'history_date': datetime.datetime(2019, 5, 5, 21, 18, 52, 55837, tzinfo=<UTC>), 'history_change_reason': None, 'history_type': '+', 'history_user_id': None}]>
 ```
 
