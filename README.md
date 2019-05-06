@@ -281,7 +281,7 @@ OrderedDict([('first_name', 'Arnaud'),
 <QuerySet [<PersonVehicle: XYZ 123 Arnaud Alepee>, <PersonVehicle: ABC 456 Arnaud Alepee>]>
 ```
 
-## Views
+### Views
 In the previous example we were using a json file and django shell to insert data into our datawarehouse. Let's take this forward by adding a `view` that will allow to insert data through a `POST` api request.
 
 ```python
@@ -317,3 +317,12 @@ As you can see we use the same sequence that we used in django shell, but using 
 >>>curl -H "Content-Type: application/json" -d @sample.json -X POST http://127.0.0.1:8000/PersonVehicle/add/
 ["All good, everything has been saved"]
 ```
+
+## Conclusion
+In this article, we have covered all the steps and components of building a datwarehouse with django:
+- Use the django ORM to create 3rd normal form data model;
+- Use simple history to track changes overtime;
+- Use serializer the rest framework for deserializing source files and save the results in the datawarehouse; and
+- Use views from the rest framework to allow source systems to send information through a POST request.
+
+All the above, should give enough information to build your own datawarehouse, of course you will have to go through all the different sources, understand how the data will be used downstream to model the data in the most efficient way.
