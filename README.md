@@ -251,8 +251,8 @@ class PersonVehicleSerializer(serializers.Serializer):
 
         # Then create each Vehicle and link it to the person created before
         for vehicle in self.validated_data["vehicles"]:
-            vehicle_obj = Vehicle.objects.get_or_create(registration_plate=vehicle["registration_plate"])
-            personvehicle_obj = PersonVehicle.objects.update_or_create(
+            vehicle_obj, created = Vehicle.objects.get_or_create(registration_plate=vehicle["registration_plate"])
+            personvehicle_obj, created = PersonVehicle.objects.update_or_create(
                 vehicle=vehicle_obj, defaults={"person": person_obj}
             )
 ```
@@ -314,5 +314,6 @@ def PersonVehicle(request):
 As you can see we use the same sequence that we used in django shell, but using the `api_view` decorator to expose this endpoint to another system or user. Which means that we can now communicate with our datawarehouse from any system (you need to make sure you django server is running).
 
 ```shell
-curl -H "Content-Type: application/json" -d @sample.json -X POST http://127.0.0.1:8000/PersonVehicle/add/
+>>>curl -H "Content-Type: application/json" -d @sample.json -X POST http://127.0.0.1:8000/PersonVehicle/add/
+["All good, everything has been saved"]
 ```
