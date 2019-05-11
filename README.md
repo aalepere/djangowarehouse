@@ -281,6 +281,8 @@ OrderedDict([('first_name', 'Arnaud'),
 <QuerySet [<PersonVehicle: XYZ 123 Arnaud Alepee>, <PersonVehicle: ABC 456 Arnaud Alepee>]>
 ```
 
+Please note that serializers can be enriched by addind validation or transformation rules if need be like you would do in a traditional ETL implementation.
+
 ### Views
 In the previous example, we were using a json file and django shell to insert data into our datawarehouse. Let's take this forward by adding a `view` that will allow inserting data through a `POST` api request.
 
@@ -325,4 +327,4 @@ In this article, we have covered all the steps and components of building a datw
 - Use serializer the rest framework for deserializing source files and save the results in the datawarehouse; and
 - Use views from the rest framework to allow source systems to send information through a POST request.
 
-All the above, should give enough information to build your own datawarehouse, of course, you will have to go through all the different sources, understand how the data will be used downstream to model the data in the most efficient way.
+All the above, should give enough information to build your own datawarehouse, of course, you will have to go through all the different sources, understand how the data will be used downstream to model the data in the most efficient way, and add all transformation/validation rules in your ETL.
