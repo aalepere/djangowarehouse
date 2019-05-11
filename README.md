@@ -1,5 +1,6 @@
 # Django datawarehouse
 This repo contains the code to support the article published on Medium.
+https://medium.com/@arnaud_76506/implementing-a-data-warehouse-with-django-e4856c92f146
 
 ## 1 Libraries
 A requirements file has been created so you can set up your own virtual env and then install libraries as listed in requirements.txt
