@@ -1,3 +1,4 @@
+[![CodeFactor](https://www.codefactor.io/repository/github/aalepere/djangowarehouse/badge/master)](https://www.codefactor.io/repository/github/aalepere/djangowarehouse/overview/master)
 # Django datawarehouse
 This repo contains the code to support the article published on Medium.
 https://medium.com/@arnaud_76506/implementing-a-data-warehouse-with-django-e4856c92f146
